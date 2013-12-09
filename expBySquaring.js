@@ -10,12 +10,17 @@
 
 module.exports = expBySquaring;
 function expBySquaring(x, n) {
-  if (typeof x !== 'number' || typeof n !== 'number' || n % 1) {
+  if (typeof x !== 'number' || typeof n !== 'number' || isNaN(x) || isNaN(n)) {
     console.error('wrong arguments');
     return NaN;
   }
-  if (n === 0)
+  if (n % 1 || !isFinite(x) || !isFinite(n)) {
+    console.error('this arguments are not supported yet');
+    return NaN;
+  }
+  if (n === 0) {
     return 1;
+  }
   if (n < 0) {
     x = 1 / x;
     n = -n;
